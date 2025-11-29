@@ -121,7 +121,9 @@ components/
 
 5. **Open your browser**
    
-   Navigate to [http://localhost:3000](http://localhost:3000)
+   Navigate to [http://localhost:3001](http://localhost:3001)
+
+   > **Note**: The dev server runs on port 3001 by default. You can change this in `package.json` if needed.
 
 ## 📱 Usage Flow
 
@@ -210,6 +212,69 @@ npm start
 # Run linting
 npm run lint
 ```
+
+## 🚀 Deployment to Vercel
+
+This Next.js app is optimized for deployment on Vercel. Follow these steps:
+
+### Option 1: Deploy via Vercel CLI
+
+1. **Install Vercel CLI** (if not already installed)
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Login to Vercel**
+   ```bash
+   vercel login
+   ```
+
+3. **Deploy to production**
+   ```bash
+   vercel --prod
+   ```
+
+### Option 2: Deploy via GitHub (Recommended)
+
+1. **Push your code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Import project on Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "New Project"
+   - Import your GitHub repository
+   - Vercel will automatically detect Next.js
+
+3. **Configure Environment Variables**
+   - In your Vercel project settings, go to "Environment Variables"
+   - Add `OPENAI_API_KEY` if you want LLM features (optional)
+   - Deploy!
+
+### Vercel Configuration
+
+- **Framework Preset**: Next.js (auto-detected)
+- **Build Command**: `npm run build` (default)
+- **Output Directory**: `.next` (default)
+- **Install Command**: `npm install` (default)
+
+The app will automatically:
+- Build and optimize on Vercel's edge network
+- Handle API routes at `/api/*`
+- Deploy with zero configuration needed
+
+### Environment Variables on Vercel
+
+If you want to use OpenAI features, add this environment variable in Vercel:
+
+| Variable | Value | Required |
+|----------|-------|----------|
+| `OPENAI_API_KEY` | Your OpenAI API key | No (app works without it) |
+
+**Note**: Without the API key, the mentor feature will use mock responses, so the app is fully functional without it.
 
 ## 📝 Notes
 
